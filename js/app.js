@@ -19,6 +19,15 @@ gradient.addColorStop("0.9", "#fff");
 
 const background = new Image();
 background.src = "../img/BG.png";
+const background2 = new Image();
+background2.src = "../img/BG2.png";
+const background3 = new Image();
+background3.src = "../img/BG3.png";
+const background4 = new Image();
+background4.src = "../img/BG4.png";
+const background5 = new Image();
+background5.src = "../img/BG5.png";
+
 const BG = {
   x1: 0,
   x2: canvas.width,
@@ -32,25 +41,40 @@ function handleBackground() {
   else BG.x1 -= gamespeed;
   if (BG.x2 <= -BG.width + gamespeed) BG.x2 = BG.width;
   else BG.x2 -= gamespeed;
+
   ctx.drawImage(background, BG.x1, BG.y, BG.width, BG.height);
+  ctx.drawImage(background2, BG.x1, BG.y, BG.width, BG.height);
+  ctx.drawImage(background3, BG.x1, BG.y, BG.width, BG.height);
+  ctx.drawImage(background4, BG.x1, BG.y, BG.width, BG.height);
+  ctx.drawImage(background5, BG.x1, BG.y, BG.width, BG.height);
+
   ctx.drawImage(background, BG.x2, BG.y, BG.width, BG.height);
+  ctx.drawImage(background2, BG.x2, BG.y, BG.width, BG.height);
+  ctx.drawImage(background3, BG.x2, BG.y, BG.width, BG.height);
+  ctx.drawImage(background4, BG.x2, BG.y, BG.width, BG.height);
+  ctx.drawImage(background5, BG.x2, BG.y, BG.width, BG.height);
 }
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  //   ctx.fillRect(10, canvas.height - 90, 50, 50);
+
   handleBackground();
   handleObstacles();
   handleParticles();
+
   player.update();
   player.draw();
+
   ctx.fillStyle = gradient;
   ctx.font = "90px Georgia";
   ctx.strokeText(score, 450, 70);
   ctx.fillText(score, 450, 70);
+
   handleCollisions();
+
   if (handleCollisions()) return;
   requestAnimationFrame(animate);
+
   angle += 0.12;
   hue++;
   frame++;

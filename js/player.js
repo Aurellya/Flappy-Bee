@@ -1,16 +1,18 @@
 const character = new Image();
-character.src = "../img/dragon.png";
+character.src = "../img/bee.png";
 
 class Player {
   constructor() {
     this.x = 150;
     this.y = 200;
     this.vy = 0;
-    this.originalWidth = 941;
-    this.originalHeight = 680;
+
+    this.originalWidth = 458;
+    this.originalHeight = 347;
     this.width = this.originalWidth / 20;
     this.height = this.originalHeight / 20;
-    this.weight = 0.7;
+
+    this.weight = 0.65;
     this.frameX = 0;
   }
 
@@ -39,17 +41,17 @@ class Player {
 
   draw() {
     ctx.fillStyle = "red";
-    // ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillRect(this.x, this.y, this.width, this.height); for testing
     ctx.drawImage(
       character,
       this.frameX * this.originalWidth,
       0,
       this.originalWidth,
       this.originalHeight,
-      this.x - 20,
-      this.y - 12,
-      this.width * 1.7,
-      this.height * 1.7
+      this.x - 17,
+      this.y - 10,
+      this.width * 1.8,
+      this.height * 1.8
     );
   }
 
