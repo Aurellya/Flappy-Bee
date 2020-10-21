@@ -18,6 +18,7 @@ class Obstacle {
 
   update() {
     this.x -= gamespeed;
+
     if (!this.counted && this.x < player.x) {
       score++;
       this.counted = true;

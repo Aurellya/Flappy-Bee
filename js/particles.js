@@ -6,19 +6,22 @@ class Particle {
     this.y = player.y;
     this.size = Math.random() * 7 + 3;
     this.speedY = Math.random() * 1 - 0.5;
-    this.color = "hsla(" + hue + ",100%, 50%,0.8)";
+    // this.color = "hsla(" + hue + ",100%, 50%,0.8)";
+    this.color = "hsla(37, 95%, 68%, " + hueOp + ")";
   }
 
   update() {
-    this.x -= gamespeed;
+    this.x -= gamespeed + 2;
     this.y += this.speedY;
   }
 
   draw() {
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
+    if (gamespeed != 0) {
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 }
 

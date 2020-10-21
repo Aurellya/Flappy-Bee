@@ -6,16 +6,17 @@ canvas.height = 400;
 let spacePressed = false;
 let angle = 0;
 let hue = 0;
+let hueOp = 0.7;
 let frame = 0;
 let score = 0;
-let gamespeed = 2;
+var gamespeed = 0;
 
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
-gradient.addColorStop("0.4", "#fff");
-gradient.addColorStop("0.5", "#000");
-gradient.addColorStop("0.55", "#4040ff");
-gradient.addColorStop("0.6", "#000");
-gradient.addColorStop("0.9", "#fff");
+gradient.addColorStop("0.4", "#000");
+// gradient.addColorStop("0.5", "#101010");
+// gradient.addColorStop("0.55", "#4040ff");
+gradient.addColorStop("0.6", "#2F2139");
+gradient.addColorStop("0.9", "#FFF7E2");
 
 const background = new Image();
 background.src = "../img/BG.png";
@@ -66,17 +67,34 @@ function animate() {
   player.draw();
 
   ctx.fillStyle = gradient;
-  ctx.font = "90px Georgia";
-  ctx.strokeText(score, 450, 70);
-  ctx.fillText(score, 450, 70);
+  ctx.font = "60px Verdana";
+
+  let tempScore = 530;
+
+  if (score.toString().length != 1) {
+    if (score.toString().length >= 2) {
+      tempScore -= 40 * (score.toString().length - 1);
+    }
+  }
+
+  ctx.strokeText(score, tempScore, 70);
+  ctx.fillText(score, tempScore, 70);
 
   handleCollisions();
 
-  if (handleCollisions()) return;
+  if (handleCollisions()) {
+    return true;
+  }
+
   requestAnimationFrame(animate);
 
   angle += 0.12;
   hue++;
+  if (hueOp < 0) {
+    hueOp = 0.6;
+  } else {
+    hueOp -= 0.01;
+  }
   frame++;
 }
 
@@ -110,7 +128,21 @@ function handleCollisions() {
         160,
         canvas.height / 2 - 10
       );
+      document.getElementById("button").style.display = "inline-block";
       return true;
     }
   }
 }
+
+document.getElementById("button2").onclick = () => {
+  document.getElementById("button2").style.display = "none";
+  gamespeed = 2;
+  player.y = 200;
+};
+
+document.getElementById("button").onclick = () => {
+  location.reload();
+  // document.getElementById("canvas").reload();
+  // $("#canvas").load("../index.html #canvas>*", "");
+  // $("#canvas").load("/app.js>*");
+};

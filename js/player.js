@@ -20,11 +20,19 @@ class Player {
     let curve = Math.sin(angle) * 20;
 
     if (this.y > canvas.height - this.height * 3 + curve) {
-      this.y = canvas.height + -this.height * 3 + curve;
+      this.y = canvas.height - this.height * 3 + curve;
       this.vy = 0;
     } else {
+      let temp_vy;
+
+      if (gamespeed != 0) {
+        temp_vy = 0.7;
+      } else {
+        temp_vy = 0.4;
+      }
+
       this.vy += this.weight;
-      this.vy *= 0.9;
+      this.vy *= temp_vy;
       this.y += this.vy;
     }
 
@@ -41,7 +49,17 @@ class Player {
 
   draw() {
     ctx.fillStyle = "red";
-    // ctx.fillRect(this.x, this.y, this.width, this.height); for testing
+
+    // for testing
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
+
+    let temp;
+    if (gamespeed == 0) {
+      temp = 150;
+    } else {
+      temp = 10;
+    }
+
     ctx.drawImage(
       character,
       this.frameX * this.originalWidth,
@@ -49,7 +67,7 @@ class Player {
       this.originalWidth,
       this.originalHeight,
       this.x - 17,
-      this.y - 10,
+      this.y - temp,
       this.width * 1.8,
       this.height * 1.8
     );
