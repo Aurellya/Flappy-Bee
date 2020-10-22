@@ -10,6 +10,7 @@ let hueOp = 0.7;
 let frame = 0;
 let score = 0;
 var gamespeed = 0;
+var obst = 0;
 
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
 gradient.addColorStop("0.4", "#000");
@@ -63,9 +64,11 @@ function animate() {
   handleObstacles();
   handleParticles();
 
+  // player handling
   player.update();
   player.draw();
 
+  // Score Styling and positioning
   ctx.fillStyle = gradient;
   ctx.font = "60px Verdana";
 
@@ -80,6 +83,7 @@ function animate() {
   ctx.strokeText(score, tempScore, 70);
   ctx.fillText(score, tempScore, 70);
 
+  // Collision handling
   handleCollisions();
 
   if (handleCollisions()) {
@@ -114,13 +118,40 @@ bang.src = "../img/bang.png";
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (
+      // [HORIZONTAL POSITON] back-side player << right-side obstacle
       player.x < obstaclesArray[i].x + obstaclesArray[i].width &&
+      // [HORIZONTAL POSITON] front-side player >> left-side obstacle
       player.x + player.width > obstaclesArray[i].x &&
-      ((player.y < 0 + obstaclesArray[i].top && player.y + player.height > 0) ||
+      // [VERTICAL POSITION]
+      // top-side player << bottom-side of top obstacle
+      ((player.y < obstaclesArray[i].top &&
+        // bottom-side player >> 0
+        player.y + player.height > 0) ||
+        // top-side player >> top-side of bottom obstacle
         (player.y > canvas.height - obstaclesArray[i].bottom &&
+          // bottom-side player << bottom-side of bottom obstacle / bottom canvas
           player.y + player.height < canvas.height))
+
+      // player.x + player.width > obstaclesArray[i].x - 40 &&
+      // player.y < obstaclesArray[i].top &&
+      // player.y > obstaclesArray[i].top - 10 &&
+      // player.y + player.height > obstaclesArray[i].bottom
+
+      // player.x + player.width > obstaclesArray[i].x &&
+      // player.y < obstaclesArray[i].top &&
+      // player.y + player.height > obstaclesArray[i].bottom
     ) {
-      ctx.drawImage(bang, player.x, player.y, 50, 50);
+      // console.log(player.x);
+      // console.log(obstaclesArray[i].x - obstaclesArray[i].width - 3);
+      if (
+        player.x >= obstaclesArray[i].x - obstaclesArray[i].width - 3 &&
+        (player.y <= obstaclesArray[i].top ||
+          player.y >= obstaclesArray[i].bottom)
+      ) {
+        ctx.drawImage(bang, player.x + 20, player.y - 10, 50, 50);
+      }
+      // ctx.drawImage(bang, player.x + 20, player.y, 50, 50);
+
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
       ctx.fillText(

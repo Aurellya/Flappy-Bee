@@ -9,8 +9,8 @@ class Player {
 
     this.originalWidth = 458;
     this.originalHeight = 347;
-    this.width = this.originalWidth / 20;
-    this.height = this.originalHeight / 20;
+    this.width = this.originalWidth / 12;
+    this.height = this.originalHeight / 12;
 
     this.weight = 0.65;
     this.frameX = 0;
@@ -41,7 +41,7 @@ class Player {
       this.vy = 0;
     }
 
-    if (spacePressed && this.y > this.height * 3) this.fly();
+    spacePressed && this.fly();
 
     this.vy += this.weight;
     this.y += this.vy;
@@ -51,13 +51,13 @@ class Player {
     ctx.fillStyle = "red";
 
     // for testing
-    // ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.fillRect(this.x, this.y, this.width, this.height);
 
     let temp;
     if (gamespeed == 0) {
       temp = 150;
     } else {
-      temp = 10;
+      temp = 12;
     }
 
     ctx.drawImage(
@@ -66,10 +66,10 @@ class Player {
       0,
       this.originalWidth,
       this.originalHeight,
-      this.x - 17,
+      this.x - 13,
       this.y - temp,
-      this.width * 1.8,
-      this.height * 1.8
+      this.width * 1.4,
+      this.height * 1.4
     );
   }
 

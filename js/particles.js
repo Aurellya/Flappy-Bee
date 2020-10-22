@@ -3,7 +3,7 @@ const particlesArray = [];
 class Particle {
   constructor() {
     this.x = player.x;
-    this.y = player.y;
+    this.y = player.y + 20;
     this.size = Math.random() * 7 + 3;
     this.speedY = Math.random() * 1 - 0.5;
     // this.color = "hsla(" + hue + ",100%, 50%,0.8)";
