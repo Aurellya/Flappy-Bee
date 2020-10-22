@@ -13,8 +13,8 @@ var gamespeed = 0;
 var obst = 0;
 
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
-gradient.addColorStop("0.4", "#000");
-gradient.addColorStop("0.6", "#2F2139");
+gradient.addColorStop("0.4", "#FFF7E2");
+gradient.addColorStop("0.7", "#866286");
 gradient.addColorStop("0.9", "#FFF7E2");
 
 const background = new Image();

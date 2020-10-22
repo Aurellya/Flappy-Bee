@@ -50,6 +50,7 @@ class Obstacle {
       10
     );
     let top = createFirstObs2(this.x, 0, this.width, this.top, 10);
+
     ctx.fill(bottom, "nonzero");
     ctx.fill(top, "nonzero");
   }
