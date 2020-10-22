@@ -12,6 +12,13 @@ let score = 0;
 var gamespeed = 0;
 var obst = 0;
 
+var audio = document.getElementById("audio1");
+var audio2 = document.getElementById("audio2");
+var audio3 = document.getElementById("audio3");
+audio3.currentTime = 1.09;
+audio.play();
+audio2.play();
+
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
 gradient.addColorStop("0.4", "#FFF7E2");
 gradient.addColorStop("0.7", "#866286");
@@ -111,8 +118,6 @@ window.addEventListener("keyup", (e) => {
   player.frameX = 0;
 });
 
-// const bang = new Image();
-// bang.src = "../img/bang.png";
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (
@@ -141,6 +146,8 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
+      audio.play();
+      audio3.play();
       return true;
     } else if (
       i == obstaclesArray.length - 1 &&
@@ -161,6 +168,8 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
+      audio.play();
+      audio3.play();
       return true;
     } else if (
       i == obstaclesArray.length - 1 &&
@@ -181,6 +190,8 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
+      audio.play();
+      audio3.play();
       return true;
     }
   }
@@ -190,6 +201,8 @@ document.getElementById("button2").onclick = () => {
   document.getElementById("button2").style.display = "none";
   gamespeed = 2;
   player.y = 200;
+  audio.pause();
+  audio.currentTime = 120;
 };
 
 document.getElementById("button").onclick = () => {
