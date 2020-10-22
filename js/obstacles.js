@@ -2,15 +2,12 @@ const obstaclesArray = [];
 
 class Obstacle {
   constructor() {
-    // this.top = (Math.random() * canvas.height) / 3 + 20;
-    // this.bottom = (Math.random() * canvas.height) / 3 + 20;
-
     this.top = Math.random() * (canvas.height - 150) + 20;
     this.bottom = canvas.height - this.top - 110;
 
     this.x = canvas.width;
     this.width = 35;
-    // this.color = "hsla(" + hue + ",100%, 50%,1)";
+
     this.color = "#150705";
     setInterval(() => {
       this.color = "#FAAF41";
@@ -131,7 +128,7 @@ function handleObstacles() {
       }
     }
 
-    if (obstaclesArray.length > 100) {
+    if (obstaclesArray.length > 200) {
       obstaclesArray.pop(obstaclesArray[0]);
     }
   }

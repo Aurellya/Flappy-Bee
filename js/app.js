@@ -14,8 +14,6 @@ var obst = 0;
 
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
 gradient.addColorStop("0.4", "#000");
-// gradient.addColorStop("0.5", "#101010");
-// gradient.addColorStop("0.55", "#4040ff");
 gradient.addColorStop("0.6", "#2F2139");
 gradient.addColorStop("0.9", "#FFF7E2");
 
@@ -113,8 +111,8 @@ window.addEventListener("keyup", (e) => {
   player.frameX = 0;
 });
 
-const bang = new Image();
-bang.src = "../img/bang.png";
+// const bang = new Image();
+// bang.src = "../img/bang.png";
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (
@@ -131,9 +129,49 @@ function handleCollisions() {
         player.y + player.height > 0) ||
         // top-side player >> top-side of bottom obstacle
         (player.y + player.height >
-          canvas.height - obstaclesArray[i].bottom + 4 &&
+          canvas.height - obstaclesArray[i].bottom + 6 &&
           // bottom-side player << bottom-side of bottom obstacle / bottom canvas
           player.y + player.height < canvas.height))
+    ) {
+      ctx.font = "25px Georgia";
+      ctx.fillStyle = "white";
+      ctx.fillText(
+        "Game Over, your score is " + score,
+        160,
+        canvas.height / 2 - 10
+      );
+      document.getElementById("button").style.display = "inline-block";
+      return true;
+    } else if (
+      i == obstaclesArray.length - 1 &&
+      obstaclesArray.length != 0 &&
+      player.x + 2 < obstaclesArray[i].x + obstaclesArray[i].width &&
+      player.x + player.width - 3 > obstaclesArray[i].x &&
+      ((player.y + 1.5 < obstaclesArray[i].top - 15 &&
+        player.y + player.height > 0) ||
+        (player.y + player.height >
+          canvas.height - obstaclesArray[i].bottom + 15 &&
+          player.y + player.height < canvas.height))
+    ) {
+      ctx.font = "25px Georgia";
+      ctx.fillStyle = "white";
+      ctx.fillText(
+        "Game Over, your score is " + score,
+        160,
+        canvas.height / 2 - 10
+      );
+      document.getElementById("button").style.display = "inline-block";
+      return true;
+    } else if (
+      i == obstaclesArray.length - 1 &&
+      obstaclesArray.length != 0 &&
+      player.x + player.width - 3 >
+        obstaclesArray[i].x - obstaclesArray[i].width - 15 &&
+      player.x < obstaclesArray[i].x &&
+      ((player.y < obstaclesArray[i].top &&
+        player.y > obstaclesArray[i].top - 25) ||
+        (player.y > canvas.height - obstaclesArray[i].bottom &&
+          player.y < canvas.height - obstaclesArray[i].bottom + 10))
     ) {
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
@@ -156,7 +194,4 @@ document.getElementById("button2").onclick = () => {
 
 document.getElementById("button").onclick = () => {
   location.reload();
-  // document.getElementById("canvas").reload();
-  // $("#canvas").load("../index.html #canvas>*", "");
-  // $("#canvas").load("/app.js>*");
 };
