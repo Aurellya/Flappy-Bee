@@ -8,6 +8,20 @@
   border: 2px solid black;
 }
 
+.audio-logo {
+  position: absolute;
+  top: 26%;
+  left: 31%;
+  z-index: 120;
+  cursor: pointer;
+  outline: 0 !important;
+  border: 0 none !important;
+  img {
+    width: 24px;
+    height: auto;
+  }
+}
+
 audio {
   display: none;
 }

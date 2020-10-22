@@ -15,9 +15,23 @@ var obst = 0;
 var audio = document.getElementById("audio1");
 var audio2 = document.getElementById("audio2");
 var audio3 = document.getElementById("audio3");
+
 audio3.currentTime = 1.09;
-audio.play();
-audio2.play();
+
+var img = document.querySelector("img");
+img.onclick = function () {
+  let now = document.querySelector("img").src;
+
+  img.src = now.includes("volume") ? "../img/mute.png" : "../img/volume.png";
+
+  if (now.includes("volume")) {
+    audio.pause();
+    audio2.pause();
+  } else {
+    audio.play();
+    audio2.play();
+  }
+};
 
 const gradient = ctx.createLinearGradient(0, 0, 0, 70);
 gradient.addColorStop("0.4", "#FFF7E2");
@@ -203,6 +217,7 @@ document.getElementById("button2").onclick = () => {
   player.y = 200;
   audio.pause();
   audio.currentTime = 120;
+  audio2.play();
 };
 
 document.getElementById("button").onclick = () => {
