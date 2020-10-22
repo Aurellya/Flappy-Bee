@@ -12,6 +12,10 @@ class Obstacle {
     this.width = 35;
     // this.color = "hsla(" + hue + ",100%, 50%,1)";
     this.color = "#150705";
+    setInterval(() => {
+      this.color = "#FAAF41";
+    }, 3700);
+
     this.counted = false;
   }
 
@@ -127,7 +131,7 @@ function handleObstacles() {
       }
     }
 
-    if (obstaclesArray.length > 20) {
+    if (obstaclesArray.length > 100) {
       obstaclesArray.pop(obstaclesArray[0]);
     }
   }
