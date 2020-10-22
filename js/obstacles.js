@@ -6,7 +6,7 @@ class Obstacle {
     // this.bottom = (Math.random() * canvas.height) / 3 + 20;
 
     this.top = Math.random() * (canvas.height - 150) + 20;
-    this.bottom = canvas.height - this.top - 100;
+    this.bottom = canvas.height - this.top - 110;
 
     this.x = canvas.width;
     this.width = 35;

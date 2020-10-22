@@ -118,17 +118,20 @@ bang.src = "../img/bang.png";
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (
+      i != obstaclesArray.length - 1 &&
+      obstaclesArray.length != 0 &&
       // [HORIZONTAL POSITON] back-side player << right-side obstacle
-      player.x < obstaclesArray[i].x + obstaclesArray[i].width &&
+      player.x + 2 < obstaclesArray[i].x + obstaclesArray[i].width &&
       // [HORIZONTAL POSITON] front-side player >> left-side obstacle
-      player.x + player.width > obstaclesArray[i].x &&
+      player.x + player.width - 2 > obstaclesArray[i].x &&
       // [VERTICAL POSITION]
       // top-side player << bottom-side of top obstacle
-      ((player.y < obstaclesArray[i].top &&
+      ((player.y + 1.5 < obstaclesArray[i].top &&
         // bottom-side player >> 0
         player.y + player.height > 0) ||
         // top-side player >> top-side of bottom obstacle
-        (player.y > canvas.height - obstaclesArray[i].bottom &&
+        (player.y + player.height >
+          canvas.height - obstaclesArray[i].bottom + 4 &&
           // bottom-side player << bottom-side of bottom obstacle / bottom canvas
           player.y + player.height < canvas.height))
 
@@ -143,14 +146,22 @@ function handleCollisions() {
     ) {
       // console.log(player.x);
       // console.log(obstaclesArray[i].x - obstaclesArray[i].width - 3);
-      if (
-        player.x >= obstaclesArray[i].x - obstaclesArray[i].width - 3 &&
-        (player.y <= obstaclesArray[i].top ||
-          player.y >= obstaclesArray[i].bottom)
-      ) {
-        ctx.drawImage(bang, player.x + 20, player.y - 10, 50, 50);
-      }
+      // if (
+      //   player.x >= obstaclesArray[i].x - obstaclesArray[i].width - 3 &&
+      //   (player.y <= obstaclesArray[i].top ||
+      //     player.y >= obstaclesArray[i].bottom)
+      // ) {
+      //   ctx.drawImage(bang, player.x + 20, player.y - 10, 50, 50);
+      // } else if (
+      //   player.x <= obstaclesArray[i].x + 3 &&
+      //   player.x + player.width >=
+      //     obstaclesArray[i].x - obstaclesArray[i].width - 3 &&
+      //   player.y <= obstaclesArray[i].top
+      // ) {
+      //   ctx.drawImage(bang, player.x + 20, player.y - 10, 120, 120);
+      // }
       // ctx.drawImage(bang, player.x + 20, player.y, 50, 50);
+      // ctx.drawImage(bang, player.x, player.y, 120, 120);
 
       ctx.font = "25px Georgia";
       ctx.fillStyle = "white";
