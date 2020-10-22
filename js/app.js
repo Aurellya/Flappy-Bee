@@ -133,12 +133,12 @@ function handleCollisions() {
           // bottom-side player << bottom-side of bottom obstacle / bottom canvas
           player.y + player.height < canvas.height))
     ) {
-      ctx.font = "25px Georgia";
+      ctx.font = "32px Georgia";
       ctx.fillStyle = "white";
       ctx.fillText(
         "Game Over, your score is " + score,
-        160,
-        canvas.height / 2 - 10
+        90,
+        canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
       return true;
@@ -153,12 +153,12 @@ function handleCollisions() {
           canvas.height - obstaclesArray[i].bottom + 15 &&
           player.y + player.height < canvas.height))
     ) {
-      ctx.font = "25px Georgia";
+      ctx.font = "32px Georgia";
       ctx.fillStyle = "white";
       ctx.fillText(
         "Game Over, your score is " + score,
-        160,
-        canvas.height / 2 - 10
+        90,
+        canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
       return true;
@@ -173,12 +173,12 @@ function handleCollisions() {
         (player.y > canvas.height - obstaclesArray[i].bottom &&
           player.y < canvas.height - obstaclesArray[i].bottom + 10))
     ) {
-      ctx.font = "25px Georgia";
+      ctx.font = "32px Georgia";
       ctx.fillStyle = "white";
       ctx.fillText(
         "Game Over, your score is " + score,
-        160,
-        canvas.height / 2 - 10
+        90,
+        canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
       return true;
