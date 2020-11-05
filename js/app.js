@@ -1,9 +1,14 @@
+// prevent auto-scrolling when spacebar is pressed
+window.onkeydown = function (e) {
+  return !(e.keyCode == 32);
+};
+
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
 canvas.width = 600;
 canvas.height = 400;
 
-let spacePressed = false;
+var spacePressed = false;
 let angle = 0;
 let hue = 0;
 let hueOp = 0.7;
@@ -11,6 +16,7 @@ let frame = 0;
 let score = 0;
 var gamespeed = 0;
 var obst = 0;
+var started = false;
 
 var audio = document.getElementById("audio1");
 var audio2 = document.getElementById("audio2");
@@ -28,8 +34,12 @@ img.onclick = function () {
     audio.pause();
     audio2.pause();
   } else {
-    audio.play();
-    audio2.play();
+    if (!started) {
+      audio.play();
+      audio2.play();
+    } else {
+      audio2.play();
+    }
   }
 };
 
@@ -132,6 +142,15 @@ window.addEventListener("keyup", (e) => {
   player.frameX = 0;
 });
 
+document.querySelector("#canvas1").addEventListener("pointerdown", () => {
+  spacePressed = true;
+});
+
+document.querySelector("#canvas1").addEventListener("pointerup", () => {
+  spacePressed = false;
+  player.frameX = 0;
+});
+
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
     if (
@@ -160,8 +179,18 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
-      audio.play();
-      audio3.play();
+
+      started = false;
+
+      let now = document.querySelector("img").src;
+      if (now.includes("volume")) {
+        audio.play();
+        audio3.play();
+      } else {
+        audio.pause();
+        audio3.pause();
+      }
+
       return true;
     } else if (
       i == obstaclesArray.length - 1 &&
@@ -182,8 +211,18 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
-      audio.play();
-      audio3.play();
+
+      started = false;
+
+      let now = document.querySelector("img").src;
+      if (now.includes("volume")) {
+        audio.play();
+        audio3.play();
+      } else {
+        audio.pause();
+        audio3.pause();
+      }
+
       return true;
     } else if (
       i == obstaclesArray.length - 1 &&
@@ -204,8 +243,18 @@ function handleCollisions() {
         canvas.height / 2 - 30
       );
       document.getElementById("button").style.display = "inline-block";
-      audio.play();
-      audio3.play();
+
+      started = false;
+
+      let now = document.querySelector("img").src;
+      if (now.includes("volume")) {
+        audio.play();
+        audio3.play();
+      } else {
+        audio.pause();
+        audio3.pause();
+      }
+
       return true;
     }
   }
@@ -217,7 +266,7 @@ document.getElementById("button2").onclick = () => {
   player.y = 200;
   audio.pause();
   audio.currentTime = 120;
-  audio2.play();
+  started = true;
 };
 
 document.getElementById("button").onclick = () => {
