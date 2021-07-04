@@ -1,5 +1,4 @@
 @mixin parallaxEff($location) {
-  // The image used
   background-image: linear-gradient(
       rgba(255, 255, 255, 0.4),
       rgba(255, 255, 255, 0.5)
@@ -21,12 +20,12 @@
 *,
 *:before,
 *:after {
-  -webkit-user-select: none; /* Chrome/Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+ */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  user-select: none; /* Standard syntax */
+  user-select: none;
 }
 
 body {
@@ -62,6 +61,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+
     .title {
       h1 {
         font-family: "Rowdies", cursive;
@@ -167,24 +167,24 @@ body {
     display: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     -webkit-touch-callout: none;
   }
 
   .button-container {
     position: relative;
     -webkit-tap-highlight-color: transparent;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     -webkit-touch-callout: none;
     .button {
       -webkit-tap-highlight-color: transparent;
-      -webkit-user-select: none; /* Safari */
-      -ms-user-select: none; /* IE 10 and IE 11 */
-      user-select: none; /* Standard syntax */
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       -webkit-touch-callout: none;
       position: absolute;
       top: 205px;
@@ -211,30 +211,29 @@ body {
   }
 }
 
-@media screen and (max-width: 1199px) {
-  .bee {
+@media (max-width: 1199px) {
+  body {
     background-image: linear-gradient(
         rgba(255, 255, 255, 0.5),
         rgba(75, 75, 75, 0.5)
       ),
       url("https://i.pinimg.com/originals/c1/3c/79/c13c7961fdecab3098dc7688262798cd.jpg");
-
     .blank {
       height: 230px;
     }
   }
 }
 
-@media screen and (max-width: 1011px) {
-  .bee {
+@media (max-width: 1011px) {
+  body {
     .blank {
       height: 220px;
     }
   }
 }
 
-@media screen and (max-width: 700px) {
-  .bee {
+@media (max-width: 700px) {
+  body {
     background-attachment: initial;
     background-repeat: repeat;
 
@@ -246,6 +245,7 @@ body {
 
     .blank {
       height: 160px;
+
       .title {
         h1 {
           font-size: 36px;
@@ -293,7 +293,6 @@ body {
 
     .button-container {
       .button {
-        // position: absolute;
         top: 115px;
         left: 137px;
         padding: 5px 10px;

@@ -1,8 +1,10 @@
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 *,
 *:before,
 *:after {
@@ -13,113 +15,158 @@
   -webkit-touch-callout: none;
   user-select: none;
 }
+
 body {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.4),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("/img/game.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.4)), to(rgba(255, 255, 255, 0.5))), url("/img/game.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.5)), url("/img/game.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 body .box {
   width: 100%;
   margin-bottom: 90px;
 }
+
 body .box .inside-box {
   width: 620px;
   border: 1px solid black;
   margin: 0 auto;
   padding: 20px;
 }
+
 body .box .inside-box h1 {
   font-family: "Rowdies", cursive;
 }
+
 body .box .inside-box p {
   font-family: "Noto Sans JP", sans-serif;
   margin-top: 10px;
   font-size: 18px;
 }
+
 body .box .inside-box .secondh1 {
   margin-top: 20px;
 }
+
 body .blank {
   width: 100%;
   height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
+
 body .blank .title h1 {
   font-family: "Rowdies", cursive;
   font-size: 40px;
   padding-bottom: 50px;
 }
+
 body .media-container {
   outline: 0 !important;
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
 }
+
 body .media-container .media {
   width: 605px;
   margin: 0 auto;
   border-radius: 5px 5px 0 0;
-  box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+          box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 body .media-container .media .nav-wrapper {
   border: 1px solid #c1c1c1;
-  flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   border-radius: 5px 5px 0 0;
   border-bottom: 1px solid #c1c1c1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #eaeaea;
 }
+
 body .media-container .media .nav-wrapper a .dots-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 8px 10px;
 }
+
 body .media-container .media .nav-wrapper a .dots-wrapper #dot-1 {
   background-color: #fc6058;
 }
+
 body .media-container .media .nav-wrapper a .dots-wrapper #dot-2 {
   background-color: #fec02f;
 }
+
 body .media-container .media .nav-wrapper a .dots-wrapper #dot-3 {
   background-color: #2aca3e;
 }
+
 body .media-container .media .nav-wrapper a .dots-wrapper .browser-dot {
   background-color: black;
   height: 15px;
   width: 15px;
   border-radius: 50%;
   margin: 5px;
+  -webkit-box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   box-shadow: -1px 1px 3px -1px rgba(0, 0, 0, 0.75);
 }
+
 body .media-container .media .content {
-  flex-basis: 100%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   height: 405px;
   width: 100%;
 }
+
 body .media-container .media .content .text {
   display: none;
 }
+
 body #canvas1 {
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
   position: relative;
   width: 100%;
   height: 100%;
   border: 2px solid black;
 }
+
 body .logo-container {
   position: relative;
 }
+
 body .logo-container .audio-logo {
   position: absolute;
   top: 30px;
@@ -129,27 +176,39 @@ body .logo-container .audio-logo {
   outline: 0 !important;
   border: 0 none !important;
 }
+
 body .logo-container .audio-logo img {
   width: 24px;
   height: auto;
 }
+
 body audio {
   display: none;
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
-  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   -webkit-touch-callout: none;
 }
+
 body .button-container {
   position: relative;
   -webkit-tap-highlight-color: transparent;
-  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   -webkit-touch-callout: none;
 }
-body .button-container .button,
-body .button-container #button2 {
+
+body .button-container .button, body .button-container #button2 {
   -webkit-tap-highlight-color: transparent;
-  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   -webkit-touch-callout: none;
   position: absolute;
   top: 205px;
@@ -163,85 +222,85 @@ body .button-container #button2 {
   display: none;
   cursor: pointer;
 }
-body .button-container .button:hover,
-body .button-container #button2:hover {
+
+body .button-container .button:hover, body .button-container #button2:hover {
   background-color: #faaf41;
 }
+
 body .button-container #button2 {
   display: inline-block;
   top: 175px;
   padding: 10px 30px;
 }
-@media screen and (max-width: 1199px) {
-  .bee {
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.5),
-        rgba(75, 75, 75, 0.5)
-      ),
-      url("https://i.pinimg.com/originals/c1/3c/79/c13c7961fdecab3098dc7688262798cd.jpg");
+
+@media (max-width: 1199px) {
+  body {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), to(rgba(75, 75, 75, 0.5))), url("https://i.pinimg.com/originals/c1/3c/79/c13c7961fdecab3098dc7688262798cd.jpg");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(75, 75, 75, 0.5)), url("https://i.pinimg.com/originals/c1/3c/79/c13c7961fdecab3098dc7688262798cd.jpg");
   }
-  .bee .blank {
+  body .blank {
     height: 230px;
   }
 }
-@media screen and (max-width: 1011px) {
-  .bee .blank {
+
+@media (max-width: 1011px) {
+  body .blank {
     height: 220px;
   }
 }
-@media screen and (max-width: 700px) {
-  .bee {
+
+@media (max-width: 700px) {
+  body {
     background-attachment: initial;
     background-repeat: repeat;
   }
-  .bee .box .inside-box {
+  body .box .inside-box {
     width: 90%;
   }
-  .bee .blank {
+  body .blank {
     height: 160px;
   }
-  .bee .blank .title h1 {
+  body .blank .title h1 {
     font-size: 36px;
     padding-bottom: 30px;
   }
-  .bee .media-container {
+  body .media-container {
     width: 340px;
     margin: 0 auto;
   }
-  .bee .media-container .media {
+  body .media-container .media {
     width: auto;
   }
-  .bee .media-container .media .nav-wrapper a .dots-wrapper {
+  body .media-container .media .nav-wrapper a .dots-wrapper {
     padding: 8px 10px;
   }
-  .bee .media-container .media .nav-wrapper a .dots-wrapper .browser-dot {
+  body .media-container .media .nav-wrapper a .dots-wrapper .browser-dot {
     height: 13px;
     width: 13px;
     margin: 4px;
   }
-  .bee .media-container .media .content {
+  body .media-container .media .content {
     margin-top: 2px;
     height: 100%;
   }
-  .bee .logo-container .audio-logo {
+  body .logo-container .audio-logo {
     top: 16px;
     left: 18px;
   }
-  .bee .logo-container .audio-logo img {
+  body .logo-container .audio-logo img {
     width: 18px;
     height: auto;
   }
-  .bee .button-container .button,
-  .bee body .button-container #button2,
-  body .bee .button-container #button2 {
+  body .button-container .button, body .button-container #button2 {
     top: 115px;
     left: 137px;
     padding: 5px 10px;
     font-size: 12px;
   }
-  .bee .button-container #button2 {
+  body .button-container #button2 {
     display: inline-block;
     top: 103px;
     padding: 5px 20px;
   }
 }
+/*# sourceMappingURL=styles.css.map */
