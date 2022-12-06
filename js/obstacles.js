@@ -112,7 +112,8 @@ class Obstacle {
 
 function handleObstacles() {
   if (gamespeed != 0) {
-    if (frame % 90 === 0) {
+    // if (frame % 90 === 0) {
+    if (frame % 230 === 0) {
       obstaclesArray.unshift(new Obstacle());
       obst++;
     }

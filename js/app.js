@@ -68,10 +68,17 @@ const BG = {
 };
 
 function handleBackground() {
-  if (BG.x1 <= -BG.width + gamespeed) BG.x1 = BG.width;
-  else BG.x1 -= gamespeed;
-  if (BG.x2 <= -BG.width + gamespeed) BG.x2 = BG.width;
-  else BG.x2 -= gamespeed;
+  if (BG.x1 <= -BG.width + gamespeed) {
+    BG.x1 = BG.width;
+  } else {
+    BG.x1 -= gamespeed;
+  }
+
+  if (BG.x2 <= -BG.width + gamespeed) {
+    BG.x2 = BG.width;
+  } else {
+    BG.x2 -= gamespeed;
+  }
 
   ctx.drawImage(background, BG.x1, BG.y, BG.width, BG.height);
   ctx.drawImage(background2, BG.x1, BG.y, BG.width, BG.height);
@@ -85,71 +92,6 @@ function handleBackground() {
   ctx.drawImage(background4, BG.x2, BG.y, BG.width, BG.height);
   ctx.drawImage(background5, BG.x2, BG.y, BG.width, BG.height);
 }
-
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  handleBackground();
-  handleObstacles();
-  handleParticles();
-
-  // player handling
-  player.update();
-  player.draw();
-
-  // Score Styling and positioning
-  ctx.fillStyle = gradient;
-  ctx.font = "60px Verdana";
-
-  let tempScore = 530;
-
-  if (score.toString().length != 1) {
-    if (score.toString().length >= 2) {
-      tempScore -= 40 * (score.toString().length - 1);
-    }
-  }
-
-  ctx.strokeText(score, tempScore, 70);
-  ctx.fillText(score, tempScore, 70);
-
-  // Collision handling
-  handleCollisions();
-
-  if (handleCollisions()) {
-    return true;
-  }
-
-  requestAnimationFrame(animate);
-
-  angle += 0.12;
-  hue++;
-  if (hueOp < 0) {
-    hueOp = 0.6;
-  } else {
-    hueOp -= 0.01;
-  }
-  frame++;
-}
-
-animate();
-
-window.addEventListener("keydown", (e) => {
-  e.code === "Space" && (spacePressed = true);
-});
-
-window.addEventListener("keyup", (e) => {
-  e.code === "Space" && (spacePressed = false);
-  player.frameX = 0;
-});
-
-document.querySelector("#canvas1").addEventListener("pointerdown", () => {
-  spacePressed = true;
-});
-
-document.querySelector("#canvas1").addEventListener("pointerup", () => {
-  spacePressed = false;
-  player.frameX = 0;
-});
 
 function handleCollisions() {
   for (let i = 0; i < obstaclesArray.length; i++) {
@@ -260,9 +202,78 @@ function handleCollisions() {
   }
 }
 
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  handleBackground();
+  handleObstacles();
+  handleParticles();
+
+  // player handling
+  player.update();
+  player.draw();
+
+  // Score Styling and positioning
+  ctx.fillStyle = gradient;
+  ctx.font = "60px Verdana";
+
+  let tempScore = 530;
+
+  if (score.toString().length != 1) {
+    if (score.toString().length >= 2) {
+      tempScore -= 40 * (score.toString().length - 1);
+    }
+  }
+
+  ctx.strokeText(score, tempScore, 70);
+  ctx.fillText(score, tempScore, 70);
+
+  // Collision handling
+  handleCollisions();
+
+  if (handleCollisions()) {
+    return true;
+  }
+
+  requestAnimationFrame(animate);
+
+  // angle += 0.12;
+  angle += 0.04;
+  hue++;
+
+  if (hueOp < 0) {
+    hueOp = 0.6;
+  } else {
+    hueOp -= 0.01;
+  }
+
+  frame++;
+}
+
+animate();
+
+window.addEventListener("keydown", (e) => {
+  e.code === "Space" && (spacePressed = true);
+});
+
+window.addEventListener("keyup", (e) => {
+  e.code === "Space" && (spacePressed = false);
+  player.frameX = 0;
+});
+
+document.querySelector("#canvas1").addEventListener("pointerdown", () => {
+  spacePressed = true;
+});
+
+document.querySelector("#canvas1").addEventListener("pointerup", () => {
+  spacePressed = false;
+  player.frameX = 0;
+});
+
 document.getElementById("button2").onclick = () => {
   document.getElementById("button2").style.display = "none";
-  gamespeed = 2;
+  // gamespeed = 2;
+  gamespeed = 0.7;
   player.y = 200;
   audio.pause();
   audio.currentTime = 120;
