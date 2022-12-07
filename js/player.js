@@ -12,13 +12,12 @@ class Player {
     this.width = this.originalWidth / 14;
     this.height = this.originalHeight / 14;
 
-    // this.weight = 0.65;
-    this.weight = 0.45;
+    this.weight = 0.65;
+    // this.weight = 0.45;
     this.frameX = 0;
   }
 
   update() {
-    // let curve = Math.sin(angle) * 20;
     let curve = Math.sin(angle) * 20;
 
     if (this.y > canvas.height - this.height * 3 + curve) {
@@ -46,7 +45,7 @@ class Player {
     if (spacePressed && this.y > this.height * 3) this.fly();
 
     this.vy += this.weight;
-    // this.y += this.vy;
+    this.y += this.vy;
   }
 
   draw() {
@@ -76,8 +75,8 @@ class Player {
   }
 
   fly() {
-    // this.vy -= 2;
-    this.vy -= 1.4;
+    this.vy -= 2;
+    // this.vy -= 1.4;
     if (this.frameX >= 3) this.frameX = 0;
     else if (this.frameX % 3 === 0) this.frameX++;
   }

@@ -237,8 +237,8 @@ function animate() {
 
   requestAnimationFrame(animate);
 
-  // angle += 0.12;
-  angle += 0.04;
+  angle += 0.12;
+  // angle += 0.04;
   hue++;
 
   if (hueOp < 0) {
@@ -272,8 +272,8 @@ document.querySelector("#canvas1").addEventListener("pointerup", () => {
 
 document.getElementById("button2").onclick = () => {
   document.getElementById("button2").style.display = "none";
-  // gamespeed = 2;
-  gamespeed = 0.7;
+  gamespeed = 2;
+  // gamespeed = 0.7;
   player.y = 200;
   audio.pause();
   audio.currentTime = 120;
