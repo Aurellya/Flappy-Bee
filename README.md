@@ -2,9 +2,6 @@
 First Game using Pure Vanilla JavaScript - Flappy Grumpy Bee :}
 <br/> Share Your Highest Score
 
-# Play Here
-<a href="https://flappy-bee.netlify.app/">flappy-bee.netlify.app</a>
-<br/><br/>
 Note: It can be played on both desktop and mobile
 
 ## Preview
